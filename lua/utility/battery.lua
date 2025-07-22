@@ -15,6 +15,10 @@ local battery_symbols = {
 
 -- Function to fetch battery percentage and assign symbol and color
 function M.get_battery()
+    -- BAT1 might not be the battery that is being used
+    -- run ls /sys/class/power_supply/ on linux to find the correct battery supplier
+    -- on MacOS replace with: 
+    -- local handle = io.popen("pmset -g batt | grep -Eo '\\d+%' | cut -d'%' -f1")
     local handle = io.popen("cat /sys/class/power_supply/BAT1/capacity 2>/dev/null")
     if not handle then
         return "No Battery 1" -- Default fallback if the command fails
