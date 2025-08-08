@@ -40,7 +40,7 @@ return {
 
                     vim.cmd(string.format("highlight SnacksDashboardHeader guifg=%s", color))
 
-                    return { section = "header", padding = 0 }
+                    return { section = "header", align="left", padding = 0 }
                 end,
                 {
                     align = 'center',
@@ -91,9 +91,15 @@ return {
             notification = {
                 -- wo = { wrap = true } -- Wrap notifications
             }
-        }
+        },
+        image = {backend = "kitty"},
     },
     keys = {
+        { "<leader>db", function() Snacks.dashboard() end,             desc = "launch DashBoard"},
+        { "<leader>fs", function() Snacks.picker.smart() end,          desc = "Find recent fileS"},
+        { "<leader>ff", function() Snacks.picker.files() end,           desc = "Find Files"},
+        { "<leader>fg", function() Snacks.picker.grep() end,           desc = "Find with Grep"},
+        { "<leader>u",  function() Snacks.picker.undo() end,           desc = "Undotree"},
         { "<leader>z",  function() Snacks.zen() end,                   desc = "Toggle Zen Mode" },
         { "<leader>Z",  function() Snacks.zen.zoom() end,              desc = "Toggle Zoom" },
         { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
