@@ -1,5 +1,5 @@
 return {
-    mason_packages = { "lua-language-server", "stylua"},
+    mason_packages = { "lua-language-server", "stylua" },
     formatter = { lua = "stylua" },
     plugins = {
         {
