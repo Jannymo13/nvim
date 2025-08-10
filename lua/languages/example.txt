@@ -1,0 +1,20 @@
+return {
+    mason_packages = {
+        -- list all packages here
+    },
+    formatter = {},
+    linters = {},
+    plugins = {
+        -- plugins and config here
+    },
+    lsp = {
+        name = "lsp-name",
+        config = {
+            -- lsp config here
+        }
+    },
+    
+    extra = function()
+        -- any other setup goes here
+    end
+

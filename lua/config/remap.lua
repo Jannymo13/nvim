@@ -1,15 +1,15 @@
 -- Save and Close
-vim.keymap.set({"n","i","v"}, "<C-s>", vim.cmd.w)
-vim.keymap.set({"n","i","v"}, "<C-q>", vim.cmd.q)
-vim.keymap.set({"n","i","v"}, "<C-A-q>", vim.cmd.qa)
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", vim.cmd.w)
+vim.keymap.set({ "n", "i", "v" }, "<C-q>", vim.cmd.q)
+vim.keymap.set({ "n", "i", "v" }, "<C-A-q>", vim.cmd.qa)
 
 -- Neotree
-vim.keymap.set("n", "<C-n>", vim.cmd.Neotree, {desc = "Open Neotree"})
+vim.keymap.set("n", "<C-n>", vim.cmd.Neotree, { desc = "Open Neotree" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>") 
+vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>")
 
 -- Buffer Movement
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
@@ -48,3 +48,5 @@ vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
 
 vim.keymap.set('n', '<Tab>', vim.cmd.bnext)
 vim.keymap.set('n', '<S-Tab>', vim.cmd.bprevious)
+
+vim.keymap.set("v", "<C-c>", '"+y')
