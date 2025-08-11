@@ -96,7 +96,13 @@ local lsp = {
                     auto_show = true,
                     draw = {
                         padding = { 0, 1 },
-                        columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
+                        columns = {
+                            { 'item_idx' },
+                            { 'divider' },
+                            { 'kind_icon' },
+                            { 'label',    'label_description', gap = 1 },
+                        },
+
                         components = {
                             item_idx = {
                                 text = function(ctx)
@@ -105,12 +111,25 @@ local lsp = {
                                 end,
                                 highlight = 'BlinkCmpItemIdx' -- optional, only if you want to change its color
                             },
+
+                            divider = {
+                                text = function(_) return '│' end,
+                                highlight = 'BlinkCmpDivider'
+                            },
+
+                            kind_icon = {
+                                text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end,
+                                highlight = 'BlinkCmpNormal'
+                            },
                         },
                     },
+
+                    -- border = 'rounded',
+                    winhighlight = 'Normal:BlinkCmpNormal,FloatBorder:BlinkCmpBorder,CursorLine:BlinkCmpSel,Search:None',
                 },
 
                 list = {
-                    selection = { preselect = true, auto_insert = false } 
+                    selection = { preselect = true, auto_insert = false }
                 },
             },
 

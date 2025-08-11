@@ -1,4 +1,4 @@
-local colors = { 
+local colors = {
   None = "None",
   accent = "#e07321",
   bg = "#1F2430",

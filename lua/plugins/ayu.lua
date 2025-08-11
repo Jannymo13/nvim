@@ -16,15 +16,24 @@ return {
                 NormalNC = { bg = colors.None },
                 StatusLine = { bg = colors.panel_bg },
                 LineNr = { fg = colors.gutter_normal },
-                CursorLine = { bg = colors.line },
-                CursorLineNr = { bg = colors.guide_normal, fg = colors.panel_bg },
                 SnacksDashboardHeader = { fg = colors.None },
                 String = { fg = colors.string },
                 Constant = { fg = colors.constant },
-                ["@property"] = { fg = colors.entity},
+                ["@property"] = { fg = colors.entity },
                 ["@variable.member"] = { fg = colors.entity },
+
+
+                -- Blink.cmp colors
+                -- BlinkCmpNormal = { bg = "#1e1e2e", fg = "#cdd6f4" },
+                BlinkCmpNormal = { bg = colors.None, fg = colors.fg },
+                BlinkCmpBorder = { bg = colors.None, fg = colors.ui },
+                BlinkCmpSel = { bg = colors.panel_bg, fg = colors.markup},
+                BlinkCmpItemIdx = { fg = colors.markup, bold = true },
+                BlinkCmpDivider = { fg = colors.guide_normal },
+                BlinkCmpKind = {bg = colors.None},
             },
         })
+
         vim.cmd.colorscheme("ayu")
 
 
