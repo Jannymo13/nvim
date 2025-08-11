@@ -2,7 +2,7 @@ return {
     'Shatur/neovim-ayu',
     lazy = false,
     priority = 100,
-    config = function ()
+    config = function()
         local colors = require("config.colors")
 
         require('ayu').setup({
@@ -10,20 +10,24 @@ return {
             terminal = true,
             overrides = {
                 Cursor = { fg = colors.bg, bg = colors.fg },
-                Normal = {bg = colors.None},
-                NormalFloat = {bg = colors.None},
+                Normal = { bg = colors.None },
+                NormalFloat = { bg = colors.None },
                 SignColumn = { bg = colors.None },
-                NormalNC = {bg = colors.None},
-                -- StatusLine = {bg = colors.panel_bg},
-                StatusLine = {bg = colors.panel_bg},
-                LineNr = { fg = colors.guide_normal },
+                NormalNC = { bg = colors.None },
+                StatusLine = { bg = colors.panel_bg },
+                LineNr = { fg = colors.gutter_normal },
                 CursorLine = { bg = colors.line },
-                CursorLineNr = { fg = colors.guide_normal, bg = colors.panel_bg},
-                SnacksDashboardHeader = {fg = colors.None},
+                CursorLineNr = { bg = colors.guide_normal, fg = colors.panel_bg },
+                SnacksDashboardHeader = { fg = colors.None },
+                String = { fg = colors.string },
+                Constant = { fg = colors.constant },
+                ["@property"] = { fg = colors.entity},
+                ["@variable.member"] = { fg = colors.entity },
             },
         })
-
         vim.cmd.colorscheme("ayu")
+
+
 
         -- terminal colors
         vim.g.terminal_color_0 = colors.bg
