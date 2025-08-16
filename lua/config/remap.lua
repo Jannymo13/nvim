@@ -4,7 +4,7 @@ vim.keymap.set({ "n", "i", "v" }, "<C-q>", vim.cmd.q)
 vim.keymap.set({ "n", "i", "v" }, "<C-A-q>", vim.cmd.qa)
 
 -- Neotree
-vim.keymap.set("n", "<C-n>", vim.cmd.Neotree, { desc = "Open Neotree" })
+vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle<CR>", { desc = "Open Neotree" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

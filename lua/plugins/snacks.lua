@@ -95,8 +95,8 @@ return {
         image = {backend = "kitty"},
     },
     keys = {
-        { "<leader>db", function() Snacks.dashboard() end,             desc = "launch DashBoard"},
-        { "<leader>fr", function() Snacks.picker.smart() end,          desc = "Find Recent files"},
+        { "<leader>hm", function() Snacks.dashboard() end,             desc = "launch HoMe screen"},
+        { "<leader>fs", function() Snacks.picker.smart() end,          desc = "Find Smart"},
         { "<leader>ff", function() Snacks.picker.files() end,           desc = "Find Files"},
         { "<leader>fg", function() Snacks.picker.grep() end,           desc = "Find with Grep"},
         { "<leader>u",  function() Snacks.picker.undo() end,           desc = "Undotree"},

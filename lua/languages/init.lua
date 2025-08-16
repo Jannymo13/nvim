@@ -1,9 +1,4 @@
-local enabled = {
-    "python",
-    -- "java",
-    "lua",
-}
-
+local enabled = require("languages.enabled")
 local M = {
     plugins = {},
     mason_packages = {},

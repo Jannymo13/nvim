@@ -24,11 +24,10 @@ return {
 
 
                 -- Blink.cmp colors
-                -- BlinkCmpNormal = { bg = "#1e1e2e", fg = "#cdd6f4" },
                 BlinkCmpNormal = { bg = colors.None, fg = colors.fg },
                 BlinkCmpBorder = { bg = colors.None, fg = colors.ui },
                 BlinkCmpSel = { bg = colors.panel_bg, fg = colors.markup},
-                BlinkCmpItemIdx = { fg = colors.markup, bold = true },
+                BlinkCmpItemIdx = { fg = colors.accent, bold = true },
                 BlinkCmpDivider = { fg = colors.guide_normal },
                 BlinkCmpKind = {bg = colors.None},
             },
