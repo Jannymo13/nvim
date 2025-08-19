@@ -26,10 +26,10 @@ return {
                 -- Blink.cmp colors
                 BlinkCmpNormal = { bg = colors.None, fg = colors.fg },
                 BlinkCmpBorder = { bg = colors.None, fg = colors.ui },
-                BlinkCmpSel = { bg = colors.panel_bg, fg = colors.markup},
+                BlinkCmpSel = { bg = colors.panel_bg, fg = colors.entity },
                 BlinkCmpItemIdx = { fg = colors.accent, bold = true },
                 BlinkCmpDivider = { fg = colors.guide_normal },
-                BlinkCmpKind = {bg = colors.None},
+                BlinkCmpKind = { bg = colors.None },
             },
         })
 
