@@ -30,6 +30,8 @@ return {
                 BlinkCmpItemIdx = { fg = colors.accent, bold = true },
                 BlinkCmpDivider = { fg = colors.guide_normal },
                 BlinkCmpKind = { bg = colors.None },
+                -- htmlTag = { fg = colors.identifier },
+                htmlTagName = {fg = colors.func }
             },
         })
 

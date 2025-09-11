@@ -10,7 +10,6 @@ return {
 
             ['<A-k>'] = { 'select_prev', 'fallback' },
             ['<A-j>'] = { 'select_next', 'fallback' },
-            ['<A-CR>'] = { 'accept', 'fallback' },
             ['<CR>'] = false,
 
             ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
@@ -25,8 +24,9 @@ return {
             ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
         },
 
+        cmdline = { enabled = false },
         completion = {
-            ghost_text = { enabled = true },
+            ghost_text = { enabled = false },
             menu = {
                 auto_show = true,
                 draw = {

@@ -33,7 +33,7 @@ return {
         show_tab_indicators = false,
         indicator = {
           -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-          style = 'none', -- Options: 'icon', 'underline', 'none'
+          style = 'underline', -- Options: 'icon', 'underline', 'none'
         },
         icon_pinned = '󰐃',
         minimum_padding = 1,
@@ -51,7 +51,7 @@ return {
         },
         -- separator_selected = {},
         -- tab_selected = {},
-        -- background = {},
+        -- background = { },
         -- indicator_selected = {},
         -- fill = {},
       },

@@ -1,6 +1,5 @@
 local langs = require("languages")
 langs.setup()
-
 local lsp = {
     -- Core LSP & tools
     {
@@ -11,6 +10,33 @@ local lsp = {
             "stevearc/conform.nvim",
             "mfussenegger/nvim-dap",
             "igorlfs/nvim-dap-view",
+            {
+                "folke/trouble.nvim",
+                opts = {}, -- for default options, refer to the configuration section for custom setup.
+                cmd = "Trouble",
+                keys = {
+                    {
+                        "<leader>ce",
+                        "<cmd>Trouble diagnostics toggle<cr>",
+                        desc = "show Code Errors",
+                    },
+                    {
+                        "<leader>cs",
+                        "<cmd>Trouble symbols toggle focus=false<cr>",
+                        desc = "Code Symbols",
+                    },
+                    {
+                        "<leader>cl",
+                        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                        desc = "LSP Definitions / references / ...",
+                    },
+                    {
+                        "<leader>qf",
+                        "<cmd>Trouble qflist toggle<cr>",
+                        desc = "show Quick Fix",
+                    },
+                },
+            },
         },
         lazy = false,
         keys = {
