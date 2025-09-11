@@ -1,5 +1,3 @@
 return {
-  "lua",
-  "webscript",
   "python",
 }

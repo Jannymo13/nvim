@@ -12,14 +12,11 @@ end
 
 function M.select_languages()
     local langs_dir = vim.fn.stdpath("config") .. "/lua/languages"
-
-    -- current enabled list (from languages/enabled.lua)
     local ok_enabled, enabled = pcall(require, "languages.enabled")
     if not ok_enabled or type(enabled) ~= "table" then enabled = {} end
     local checked = {}
     for _, lang in ipairs(enabled) do checked[lang] = true end
 
-    -- discover language files
     local all_langs = {}
     local okdir, iter = pcall(vim.fs.dir, langs_dir)
     if okdir then
@@ -34,7 +31,6 @@ function M.select_languages()
             end
         end
     else
-        -- fallback to vim.fn.readdir if needed
         for _, name in ipairs(vim.fn.readdir(langs_dir, [[v:val =~ '\.lua$']])) do
             if name ~= "init.lua" and name ~= "enabled.lua" and name ~= "menu.lua" then
                 table.insert(all_langs, name:sub(1, -5))
@@ -43,59 +39,61 @@ function M.select_languages()
     end
     table.sort(all_langs)
 
-    -- menu items
     local items = {}
     for _, lang in ipairs(all_langs) do
-        table.insert(items, { lang = lang, checked = checked[lang] or false })
+        table.insert(items, {
+            label = (checked[lang] and "✔ " or "□ ") .. lang,
+            value = lang,
+            checked = checked[lang] or false,
+        })
     end
 
-    local function render_lines()
-        local lines = {}
+    -- Emulate multi-select using recursive picker calls with Save/Cancel sentinel items
+    local selected_set = {}
+    for _, it in ipairs(items) do if it.checked then selected_set[it.value] = true end end
+
+    local function build_items()
+        local list = {}
         for _, it in ipairs(items) do
-            table.insert(lines, (it.checked and "✔ " or "□ ") .. it.lang)
+            local checked_now = selected_set[it.value] or false
+            it.label = (checked_now and "✔ " or "□ ") .. it.value
+            it.checked = checked_now
+            table.insert(list, it)
         end
-        return lines
+        table.insert(list, { value = "__SAVE__", label = "💾 Save & Close" })
+        table.insert(list, { value = "__CANCEL__", label = " Cancel" })
+        return list
     end
 
-    -- snacks.win UI
-    local Win = require("snacks.win")
-    local height = math.max(3, #items + 2)
-    local width = 32
-    local total_rows = vim.o.lines
-    local total_cols = vim.o.columns
-    local row = math.floor((total_rows - height) / 2)
-    local col = math.floor((total_cols - width) / 2)
-
-    local win = Win.new({
-        title = "Select Languages",
-        height = height,
-        width = width,
-        row = row,
-        col = col,
-    })
-    vim.api.nvim_buf_set_lines(win.buf, 0, -1, false, render_lines())
-
-    local function toggle_current()
-        local row = vim.api.nvim_win_get_cursor(win.win)[1]
-        local it = items[row]
-        if it then
-            it.checked = not it.checked
-            vim.api.nvim_buf_set_lines(win.buf, 0, -1, false, render_lines())
-        end
+    local function open_picker()
+        local picker_items = build_items()
+        require("snacks.picker").select(
+            picker_items,
+            {
+                prompt = "Select Languages (toggle entries; choose Save when done)",
+                format_item = function(item) return item.label end,
+            },
+            function(choice)
+                if not choice then return end
+                if choice.value == "__SAVE__" then
+                    local new_enabled = {}
+                    for lang, v in pairs(selected_set) do if v then table.insert(new_enabled, lang) end end
+                    table.sort(new_enabled)
+                    write_enabled_langs(new_enabled)
+                    vim.notify("Saved enabled languages to languages/enabled.lua", vim.log.levels.INFO)
+                    return
+                elseif choice.value == "__CANCEL__" then
+                    vim.notify("Language selection canceled", vim.log.levels.INFO)
+                    return
+                else
+                    selected_set[choice.value] = not selected_set[choice.value]
+                    open_picker()
+                end
+            end
+        )
     end
 
-    -- Space = toggle, Enter = save & close, q = close w/o saving
-    vim.keymap.set("n", "<Space>", toggle_current, { buffer = win.buf })
-    vim.keymap.set("n", "<CR>", function()
-        local new_enabled = {}
-        for _, it in ipairs(items) do
-            if it.checked then table.insert(new_enabled, it.lang) end
-        end
-        write_enabled_langs(new_enabled)
-        win:close()
-        vim.notify("Saved enabled languages to languages/enabled.lua", vim.log.levels.INFO)
-    end)
-    vim.keymap.set("n", "q", function() win:close() end)
+    open_picker()
 end
 
 return M
