@@ -16,3 +16,8 @@ vim.g.have_nerd_font = true
 -- copilot
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
+
+-- Command to open language selection menu
+vim.api.nvim_create_user_command("LangMenu", function()
+	require("languages.menu").select_languages()
+end, { desc = "Open language selection menu" })
