@@ -50,3 +50,5 @@ vim.keymap.set('n', '<Tab>', vim.cmd.bnext)
 vim.keymap.set('n', '<S-Tab>', vim.cmd.bprevious)
 
 vim.keymap.set("v", "<C-c>", '"+y')
+
+-- TODO: vim.diagnostic.hide(nil, 0)

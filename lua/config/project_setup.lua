@@ -1,4 +1,4 @@
-local uv = vim.loop
+local uv = vim.uv or vim.loop -- 0.11+ uses vim.uv, fallback for older versions
 
 -- Create .nvimlocal directory in current working directory
 local function create_nvimlocal_dir()

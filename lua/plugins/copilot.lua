@@ -58,6 +58,6 @@ return {
 
     config = function()
         -- remap Alt Enter to accepting copilot suggestion
-        vim.api.nvim_set_keymap("i", "<A-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
+        vim.keymap.set("i", "<A-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
     end,
 }

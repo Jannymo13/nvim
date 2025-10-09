@@ -1,12 +1,18 @@
 return {
     mason_packages = { "typescript-language-server", "prettier" },
-    -- linters = { python = { "flake8" } },
-    formatters = { typescript = { "prettier" } },
+    formatters = {
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        svelte = { "prettier" },
+        vue = { "prettier" },
+    },
 
     lsp = {
         name = "ts_ls",
-        -- config = {
-        -- }
+        config = {
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
+        }
     },
-
 }

@@ -11,6 +11,8 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = true
 
+vim.wo.wrap = false
+
 vim.g.have_nerd_font = true
 
 -- copilot

@@ -31,29 +31,40 @@ M.setup = function()
         -- Merge formatter config
         if mod.formatters then
             for ft, formatters in pairs(mod.formatters) do
-                M.formatters[ft] = vim.list_extend(M.formatters[ft] or {}, formatters)
+                -- Handle both string and table formats
+                local fmt_list = type(formatters) == "string" and { formatters } or formatters
+                M.formatters[ft] = vim.list_extend(M.formatters[ft] or {}, fmt_list)
             end
         end
 
-        -- Configure LSP
-        if mod.lsp and mod.lsp.name then
-            local server = mod.lsp.name
-            local overrides = mod.lsp.config or {}
-
-            -- Load lspconfig defaults
-            local lsp_ok, lspconfig = pcall(require, "lspconfig")
-            if lsp_ok and lspconfig[server] then
-                lspconfig[server].setup({})
+        -- Configure LSP (support single or multiple LSP servers)
+        if mod.lsp then
+            -- Convert single LSP to array for uniform handling
+            local lsp_configs = {}
+            if mod.lsp.name then
+                -- Single LSP: { name = "pyright", config = {...} }
+                lsp_configs = { mod.lsp }
+            elseif type(mod.lsp) == "table" and #mod.lsp > 0 then
+                -- Multiple LSPs: { {name = "pyright", config = {...}}, {name = "ruff", config = {...}} }
+                lsp_configs = mod.lsp
             end
 
-            -- Merge overrides
-            vim.lsp.config[server] = vim.tbl_deep_extend(
-                "force",
-                vim.lsp.config[server] or {},
-                overrides
-            )
+            -- Setup each LSP server using modern vim.lsp.config API
+            for _, lsp_config in ipairs(lsp_configs) do
+                if lsp_config.name then
+                    local server = lsp_config.name
+                    local overrides = lsp_config.config or {}
 
-            table.insert(M.lsp, server)
+                    -- Use modern vim.lsp.config API (Neovim 0.11+)
+                    vim.lsp.config[server] = vim.tbl_deep_extend(
+                        "force",
+                        vim.lsp.config[server] or {},
+                        overrides
+                    )
+
+                    table.insert(M.lsp, server)
+                end
+            end
         end
 
         -- Extra setup

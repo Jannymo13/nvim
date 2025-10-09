@@ -5,7 +5,7 @@ local lsp = {
     {
         "williamboman/mason.nvim",
         dependencies = {
-            "neovim/nvim-lspconfig",
+            -- Note: nvim-lspconfig not needed in Neovim 0.11+, using vim.lsp.config directly
             "mfussenegger/nvim-lint",
             "stevearc/conform.nvim",
             "mfussenegger/nvim-dap",

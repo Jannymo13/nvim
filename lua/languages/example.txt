@@ -1,20 +1,70 @@
+-- Example language configuration file
+-- Copy this file and rename it to your language name (e.g., python.lua, rust.lua)
+
 return {
+    -- Mason packages to install (LSP servers, formatters, linters, debuggers)
     mason_packages = {
-        -- list all packages here
+        "language-server-name",
+        "formatter-name",
+        "linter-name",
     },
-    formatter = {},
-    linters = {},
+
+    -- Formatters by filetype (use arrays for multiple formatters)
+    formatters = {
+        filetype = { "formatter-name" },
+        -- Example: python = { "black" }
+    },
+
+    -- Linters by filetype (use arrays for multiple linters)
+    linters = {
+        filetype = { "linter-name" },
+        -- Example: python = { "ruff" }
+    },
+
+    -- Lazy.nvim plugins specific to this language
     plugins = {
-        -- plugins and config here
+        -- Example:
+        -- {
+        --     "plugin/repo",
+        --     ft = "filetype",
+        --     opts = {},
+        -- },
     },
+
+    -- LSP configuration (supports single or multiple servers)
+    -- Single LSP server:
     lsp = {
         name = "lsp-name",
         config = {
-            -- lsp config here
+            settings = {
+                -- LSP-specific settings here
+            },
+            on_attach = function(client, bufnr)
+                -- Optional: customize on_attach behavior
+            end,
         }
     },
+
+    -- OR Multiple LSP servers:
+    -- lsp = {
+    --     {
+    --         name = "first-lsp",
+    --         config = {
+    --             settings = {},
+    --         },
+    --     },
+    --     {
+    --         name = "second-lsp",
+    --         config = {
+    --             settings = {},
+    --         },
+    --     },
+    -- },
     
+    -- Optional: extra setup function for custom configuration
     extra = function()
-        -- any other setup goes here
+        -- Any other setup goes here
+        -- Example: custom keybindings, autocmds, etc.
     end
+}
 
