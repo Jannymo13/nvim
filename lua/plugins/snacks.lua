@@ -48,7 +48,8 @@ return {
 					text = {
 						{ "  Update ", hl = "Label" },
 						{ " 󰒲 Lazy ", hl = "@property" },
-						{ "  Last Session ", hl = "Number" },
+						-- { "  Last Session ", hl = "Number" },
+						{ " | Welcome to NeoVim! | ", hl = "Number" },
 						{ "  Files ", hl = "DiagnosticInfo" },
 						{ "  Grep ", hl = "@string" },
 					},
@@ -61,7 +62,7 @@ return {
 					section = "terminal",
 					cmd = "chafa '"
 						.. vim.fn.stdpath("config")
-						.. "/lua/utility/ui/Mango Mesa.png' --format symbols --size 75x190",
+						.. "/lua/utility/assets/Mango Mesa.png' --format symbols --size 75x190",
 					pane = 2,
 					padding = 0,
 					height = 25,
@@ -79,6 +80,7 @@ return {
 		-- rest of the snacks stuff
 		indent = { enabled = true },
 		input = { enabled = true },
+		select = { enabled = true }, -- Better vim.ui.select
 		notifier = {
 			enabled = true,
 			timeout = 3000,

@@ -1,5 +1,4 @@
 return {
-  "c",
   "lua",
   "python",
 }

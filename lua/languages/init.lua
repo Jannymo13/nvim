@@ -5,9 +5,16 @@ local M = {
     lsp = {},
     linters = {},
     formatters = {},
+    _setup_done = false, -- Guard to prevent duplicate setup
 }
 
 M.setup = function()
+    -- Only run setup once
+    if M._setup_done then
+        return
+    end
+    M._setup_done = true
+
     for _, lang in ipairs(enabled) do
         local ok, mod = pcall(require, "languages." .. lang)
         if not ok then goto continue end
@@ -49,18 +56,17 @@ M.setup = function()
                 lsp_configs = mod.lsp
             end
 
-            -- Setup each LSP server using modern vim.lsp.config API
+            -- Setup each LSP server
             for _, lsp_config in ipairs(lsp_configs) do
                 if lsp_config.name then
                     local server = lsp_config.name
                     local overrides = lsp_config.config or {}
 
-                    -- Use modern vim.lsp.config API (Neovim 0.11+)
-                    vim.lsp.config[server] = vim.tbl_deep_extend(
-                        "force",
-                        vim.lsp.config[server] or {},
-                        overrides
-                    )
+                    -- Use lspconfig for defaults (filetype associations, root_dir, etc.)
+                    local lsp_ok, lspconfig = pcall(require, "lspconfig")
+                    if lsp_ok and lspconfig[server] then
+                        lspconfig[server].setup(overrides)
+                    end
 
                     table.insert(M.lsp, server)
                 end
