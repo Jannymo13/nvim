@@ -46,10 +46,9 @@ return {
 					align = "center",
 					padding = 1,
 					text = {
-						{ "  Update ", hl = "Label" },
+						{ "  Update ", hl = "@keyword" },
 						{ " 󰒲 Lazy ", hl = "@property" },
-						-- { "  Last Session ", hl = "Number" },
-						{ " | Welcome to NeoVim! | ", hl = "Number" },
+						{ "  Last Session ", hl = "Number" },
 						{ "  Files ", hl = "DiagnosticInfo" },
 						{ "  Grep ", hl = "@string" },
 					},
@@ -70,9 +69,10 @@ return {
 				},
 
 				{ text = "", action = ":Lazy update", key = "u", hidden = true },
+				{ text = "", action = ":Lazy", key = "L", hidden = true },
+				{ text = "", section = "session", key = "S", hidden = true },
 				{ text = "", action = ":lua Snacks.dashboard.pick('files')", key = "f", hidden = true },
 				{ text = "", action = ":lua Snacks.dashboard.pick('live_grep')", key = "g", hidden = true },
-				{ text = "", action = ":Lazy", key = "L", hidden = true },
 				{ text = "", action = "z8<Right>", hidden = true, key = "c" },
 			},
 		},
@@ -80,7 +80,6 @@ return {
 		-- rest of the snacks stuff
 		indent = { enabled = true },
 		input = { enabled = true },
-		select = { enabled = true }, -- Better vim.ui.select
 		notifier = {
 			enabled = true,
 			timeout = 3000,

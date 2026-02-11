@@ -1,4 +1,4 @@
 return {
+  "c",
   "lua",
-  "python",
 }

@@ -1,6 +1,6 @@
 return {
     'Shatur/neovim-ayu',
-    lazy = false,
+    enabled = true, -- disabled: use a small config-based theme instead
     priority = 100,
     config = function()
         local colors = require("config.colors")
