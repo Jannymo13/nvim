@@ -9,7 +9,7 @@ local lsp = {
 			"mfussenegger/nvim-lint",
 			"stevearc/conform.nvim",
 			"mfussenegger/nvim-dap",
-			"igorlfs/nvim-dap-view",
+			-- "igorlfs/nvim-dap-view",
 			{
 				"folke/trouble.nvim",
 				opts = {}, -- for default options, refer to the configuration section for custom setup.

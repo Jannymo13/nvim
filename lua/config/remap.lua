@@ -59,8 +59,8 @@ vim.keymap.set("n", "<C-Up>", "<C-w>K", { desc = "Move window to top" })
 vim.keymap.set("n", "<C-Down>", "<C-w>J", { desc = "Move window to bottom" })
 
 -- Split windows
-vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split Vertical" })
-vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split Horizontal" })
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split Vertical" })
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split Horizontal" })
 
 -- ============================================================================
 -- BUFFER NAVIGATION
