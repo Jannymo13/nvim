@@ -39,8 +39,9 @@ return {
 								reportUnusedImport = "warning",
 								reportUnusedVariable = "warning",
 								reportUndefinedVariable = "error",
-								reportGeneralTypeIssues = "warning",
+								reportGeneralTypeIssues = "Warning",
 								reportOptionalMemberAccess = "warning",
+                                reportArgumentType = "none"
 							},
 						},
 					},

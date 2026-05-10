@@ -24,7 +24,7 @@ vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>", { desc = "Yank file Path to clipboard" })
 
 -- Better clipboard (system clipboard)
-vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("v", "<A-c>", '"+y', { desc = "Copy to system clipboard" })
 
 -- ============================================================================
 -- VISUAL MODE
