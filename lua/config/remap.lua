@@ -78,6 +78,3 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 -- ============================================================================
 -- PLUGIN KEYMAPS
 -- ============================================================================
-
--- Neotree
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle<CR>", { desc = "Toggle Neotree" })
