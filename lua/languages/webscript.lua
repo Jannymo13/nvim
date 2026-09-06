@@ -7,6 +7,7 @@ return {
 		typescriptreact = { "prettier" },
 		svelte = { "prettier" },
 		vue = { "prettier" },
+        html = { "prettier"}
 	},
 	plugins = {
 		{
