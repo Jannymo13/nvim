@@ -197,13 +197,6 @@ return {
 			desc = "Git Blame Line",
 		},
 		{
-			"<leader>gf",
-			function()
-				Snacks.lazygit.log_file()
-			end,
-			desc = "Lazygit Current File History",
-		},
-		{
 			"<leader>gg",
 			function()
 				Snacks.lazygit()
@@ -241,7 +234,7 @@ return {
 			desc = "Open Vertical Terminal",
 		},
 		{
-			"]]",
+			"<leader>]",
 			function()
 				Snacks.words.jump(vim.v.count1)
 			end,
@@ -249,7 +242,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"[[",
+			"<leader>[",
 			function()
 				Snacks.words.jump(-vim.v.count1)
 			end,

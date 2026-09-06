@@ -20,6 +20,12 @@ vim.keymap.set("n", "s", '"_s', { desc = "Substitute char (no yank)" })
 vim.keymap.set("n", "n", "nzz", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzz", { desc = "Previous search result (centered)" })
 
+vim.keymap.set(
+  'c', '<CR>',
+  function() return vim.fn.getcmdtype() == '/' and '<CR>zzzv' or '<CR>' end,
+  { expr = true }
+)
+
 -- Copy file path to clipboard
 vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>", { desc = "Yank file Path to clipboard" })
 
