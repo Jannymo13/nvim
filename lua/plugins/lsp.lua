@@ -8,8 +8,6 @@ local lsp = {
 			"neovim/nvim-lspconfig",
 			"mfussenegger/nvim-lint",
 			"stevearc/conform.nvim",
-			-- "mfussenegger/nvim-dap",
-			-- "igorlfs/nvim-dap-view",
 			{
 				"folke/trouble.nvim",
 				opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -102,16 +100,6 @@ local lsp = {
 				underline = { severity = vim.diagnostic.severity.ERROR },
 				update_in_insert = false,
 			})
-
-			-- -- setup debugger
-			-- local dap = require("dap")
-			-- vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "toggle Breakpoint" })
-			-- vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debug Continue" })
-			--
-			-- vim.fn.sign_define("DapBreakpoint", {
-			-- 	text = " ",
-			-- 	texthl = "ErrorMsg",
-			-- })
 		end,
 	},
 }
