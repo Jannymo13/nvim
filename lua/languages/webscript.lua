@@ -8,6 +8,16 @@ return {
 		svelte = { "prettier" },
 		vue = { "prettier" },
 	},
+	plugins = {
+		{
+			"windwp/nvim-ts-autotag",
+            event = { "BufReadPre", "BufNewFile" },
+			opts = {
+				opts = {
+				},
+			},
+		},
+	},
 
 	lsp = {
 		name = "ts_ls",

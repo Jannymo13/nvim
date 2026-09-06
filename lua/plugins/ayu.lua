@@ -21,6 +21,10 @@ return {
                 Constant = { fg = colors.constant },
                 ["@property"] = { fg = colors.entity },
                 ["@variable.member"] = { fg = colors.entity },
+                ["@tag"] = { fg = colors.identifier },
+                ["@tag.delimiter"] = { fg = colors.func },
+                ["@tag.delimiter.astro"] = { fg = colors.func },
+                ["@tag.attribute"] = { fg = colors.fg },
 
 
                 -- Blink.cmp colors
@@ -30,8 +34,6 @@ return {
                 BlinkCmpItemIdx = { fg = colors.accent, bold = true },
                 BlinkCmpDivider = { fg = colors.guide_normal },
                 BlinkCmpKind = { bg = colors.None },
-                -- htmlTag = { fg = colors.identifier },
-                htmlTagName = {fg = colors.func }
             },
         })
 
